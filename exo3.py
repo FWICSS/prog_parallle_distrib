@@ -23,8 +23,4 @@ def c2(compt2):
 
 t1 = Thread(target=c2(compt2))
 t2 = Thread(target=c1(compt1))
-for i in range(1,2):
-        if i==1 :
-            t1.start()
-        else :
-            t2.start()
+t1.start() and t2.start()

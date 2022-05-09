@@ -1,26 +1,33 @@
-import random
 import time
+import random
 from threading import Thread
 
+#debut = int(time.time()*10)
+tab = []
+'''
+for line in tab:
+    print(line)
+'''
 
-compt = 20
-compt1 = 0
-compt2 = compt
+def Moyenne(i):
+    print("\n Début calcule colonne %d\n" %i)
+    somme = 0
+    for line in range(0,99):
+        somme = somme + tab[line][i]
+    moyenne=somme/100
+    print("la moyenne de la colonne %d est de :" %i ,moyenne,end="\n")
 
-def c1(compt1):
-    while (compt1 < 100):
-        compt1 += 1
-        delais = random.randint(1,8)
-        time.sleep(delais)
-        print(compt1)
+for line in range(0, 99):
+    nvline = []
+    for col in range(0, 99):
+        value = random.randint(1, 90)
+        nvline.append(value)
+    tab.append(nvline)
 
+def main():
+    for i in range(0,99):
+        t = Thread(target=Moyenne, args=(i,))
+        t.start()
 
-def c2(compt2):
-    while (compt2 <= 100):
-        compt2 += 1
-        time.sleep(3)
-        print(compt2)
-
-t1 = Thread(target=c2(compt2))
-t2 = Thread(target=c1(compt1))
-t1.start() and t2.start()
+if __name__ == '__main__':
+    main()
